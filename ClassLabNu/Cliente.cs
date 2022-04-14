@@ -72,6 +72,10 @@ namespace ClassLabNu
         public static List<Cliente> Listar()
         {
             List<Cliente> clientes = new List<Cliente>();
+            var cmd = banco.abrir();
+            cmd.CommandType= CommandType.text;
+            cmd.CommandText="select + from clientes order by 2";
+            var dr = cmd.ExecuteReader();
             // cenas dos próximos episódios...
             return clientes;
         }
