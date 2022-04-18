@@ -28,5 +28,10 @@ namespace comercialsis
             c.Inserir();
             txtId.Text = c.Id.ToString();    
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

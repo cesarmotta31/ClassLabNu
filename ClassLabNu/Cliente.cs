@@ -29,6 +29,7 @@ namespace ClassLabNu
         // construtores
         public Cliente()
         {
+        
         }
 
         public Cliente(string nome, string cpf, string email)
@@ -49,6 +50,8 @@ namespace ClassLabNu
             DataCad = dataCad;
             Ativo = ativo;
         }
+
+        
 
         // métodos da classe
         public void Inserir(Cliente cliente) 
