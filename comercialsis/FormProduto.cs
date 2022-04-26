@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ClassLabNu
+namespace comercialsis
 {
-    public partial class Formcliente : Form
+    public partial class FormProduto : Form
     {
-        public Formcliente()
+        public FormProduto()
         {
             InitializeComponent();
         }

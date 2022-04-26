@@ -8,13 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ClassLabNu
+namespace comercialsis
 {
-    public partial class Formcliente : Form
+    public partial class FormPrincipal : Form
     {
-        public Formcliente()
+        public FormPrincipal()
         {
             InitializeComponent();
+        }
+
+        private void toolStripStatusLabel1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

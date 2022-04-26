@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MySql.Data.MySqlClient;
 using System.Data;
+using MySql.Data.MySqlClient;
 
 namespace ClassLabNu
 {
@@ -20,21 +20,21 @@ namespace ClassLabNu
 
         // propriedades
         public int Id { get { return id; } set { id = value; } }
-        public string Nome { get { return nome; } set { nome = value; } }   
-        public string Cpf { get { return cpf; }set { cpf = value; }  }
-        public string Email { get { return email; }set { email = value; } }
-        public DateTime DataCad { get { return dataCad; }set { dataCad = value; } }
+        public string Nome { get { return nome; } set { nome = value; } }
+        public string Cpf { get { return cpf; } set { cpf = value; } }
+        public string Email { get { return email; } set { email = value; } }
+        public DateTime DataCad { get { return dataCad; } set { dataCad = value; } }
         public bool Ativo { get { return ativo; } set { ativo = value; } }
 
         // construtores
-        public Cliente()
+        public Cliente(int _id = 0)
         {
-        
+            this.id = _id;
         }
 
         public Cliente(string nome, string cpf, string email)
         {
-            Nome = this.nome;
+            Nome = nome;
             Cpf = cpf;
             Email = email;
             // DataCad = DateTime.Now;
@@ -51,103 +51,107 @@ namespace ClassLabNu
             Ativo = ativo;
         }
 
-        
-
         // métodos da classe
-        public void Inserir(Cliente cliente) 
-        { 
-            
+        public void Inserir()
+        {
+            var cmd = Banco.abrir();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "sp_cliente_inserir";
+            cmd.Parameters.AddWithValue("_nome", Nome);
+            cmd.Parameters.AddWithValue("_cpf", Cpf);
+            cmd.Parameters.AddWithValue("_email", Email);
+            Id = Convert.ToInt32(cmd.ExecuteScalar());
+            cmd.Connection.Close();
         }
-        public bool Alterar(int _id, string _id, string _nome, string _email)
+        public bool Alterar(int _id, string _nome, string _email)
         {
             bool resultado = false;
-
-            try 
+            try
             {
-                var cmd = banco.abrir();
+                var cmd = Banco.abrir();
                 cmd.CommandType = CommandType.StoredProcedure;
-                // recebe procedure
+                // recebe o nome da procedure
                 cmd.CommandText = "sp_cliente_alterar";
-                // adiciona parametros da procedure - está no SQL
-                // cmd.Parameters.Add("_id", MySqlDbType.Int32).Value= _id; // linha em modo tecnico
-                //cmd.Parameters.AddWithValue("_id", _id); // tabela simples, sql trabalhará
-                cmd.Parameters.AddWithValue("_id",_id);
+                // adiciona parâmetros da procedure
+                // cmd.Parameters.Add("_id", MySqlDbType.Int32).Value = _id;
+                cmd.Parameters.AddWithValue("_id", _id);
                 cmd.Parameters.AddWithValue("_nome", _nome);
                 cmd.Parameters.AddWithValue("_email", _email);
                 cmd.ExecuteNonQuery();
                 resultado = true;
                 cmd.Connection.Close();
             }
-
             catch (Exception)
             {
 
-
             }
-
             return resultado;
         }
-        public static Cliente ConsultarPorId(int _id) 
-        { 
+        public static Cliente ConsultarPorId(int _id)
+        {
             Cliente cliente = new Cliente();
-            var cmd = banco.abrir();
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "select * from clientes where idcli =" + _id;
+            MySqlCommand cmd = Banco.abrir();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "select * from clientes where idcli = " + _id;
             MySqlDataReader dr = cmd.ExecuteReader();
             while (dr.Read())
             {
-                cliente.id = Convert.ToInt32(dr["id"]);
-                cliente.Nome = dr ["nome"].ToString();
-                cliente.cpf = dr.GetString(2); // forma mais "direta"   -- obrigatório ter conhecimento do dicionario de dados]
-                cliente.email = dr.GetString(3);
+                cliente.Id = Convert.ToInt32(dr["idcli"]);
+                cliente.Nome = dr["nome"].ToString();
+                cliente.Cpf = dr.GetString(2);
+                cliente.Email = dr.GetString(3);
                 cliente.dataCad = dr.GetDateTime(4);
-                cliente.ativo = dr.GetBoolean(5);
-
-
-
+                cliente.Ativo = dr.GetBoolean(5);
             }
             return cliente;
         }
         public static Cliente ConsultarPorCpf(string _cpf)
         {
             Cliente cliente = new Cliente();
-            var cmd = banco.abrir();
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "select * from clientes where cpf =" + _cpf;
+            MySqlCommand cmd = Banco.abrir();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "select * from clientes where cpf = " + _cpf;
             MySqlDataReader dr = cmd.ExecuteReader();
             while (dr.Read())
             {
-                cliente.id = Convert.ToInt32(dr["id"]);
+                cliente.Id = Convert.ToInt32(dr["idcli"]);
                 cliente.Nome = dr["nome"].ToString();
-                cliente.cpf = dr.GetString(2); // forma mais "direta"   -- obrigatório ter conhecimento do dicionario de dados]
-                cliente.email = dr.GetString(3);
+                cliente.Cpf = dr.GetString(2);
+                cliente.Email = dr.GetString(3);
                 cliente.dataCad = dr.GetDateTime(4);
-                cliente.ativo = dr.GetBoolean(5);
-
-
-
+                cliente.Ativo = dr.GetBoolean(5);
             }
             return cliente;
         }
         public static List<Cliente> Listar()
         {
             List<Cliente> clientes = new List<Cliente>();
-            var cmd = banco.abrir();
-            cmd.CommandType= CommandType.Text;
-            cmd.CommandText="select * from clientes where ativo = 1 order by nome";
+            var cmd = Banco.abrir();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "select * from clientes where ativo = 1 order by nome";
             var dr = cmd.ExecuteReader();
-            // cenas dos próximos episódios...
+            while (dr.Read())
+            {
+                clientes.Add(new Cliente(
+                    dr.GetInt32(0),
+                    dr.GetString(1),
+                    dr.GetString(2),
+                    dr.GetString(3),
+                    dr.GetDateTime(4),
+                    dr.GetBoolean(5)
+                    ));
+            }
             return clientes;
+        }
+        public void Desativar(int _id)
+        {
+            var cmd = Banco.abrir();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "update clientes set ativo = 0 where idcli = " + _id;
+            cmd.ExecuteReader();
+            cmd.Connection.Close();
         }
 
     }
-
-    public void  Desativar (int _id)
-    {
-        var cmd= banco.abrir();
-        cmd.CommandType = CommandType.Text;
-        cmd.CommandText = "update clientes set ativo = 0 while idcli = " + _id;
-        cmd.ExecuteReader();
-        cmd.Connection.Close(); 
-    }
 }
+

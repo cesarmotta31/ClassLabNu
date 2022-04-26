@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace ClassLabNu
 {
     public class Nivel
-    {  
+    {
         // atributos - campos
         private int id;
         private string nome;
@@ -19,7 +19,7 @@ namespace ClassLabNu
         public string Nome { get { return nome; } private set { nome = value; } }
         public string Sigla { get { return sigla; } }
 
-     
+
 
         // métodos construtores
         public Nivel()
@@ -40,8 +40,9 @@ namespace ClassLabNu
         }
         // Métodos da classe
         public void InserirNovo()
-        { 
+        {
             // inserir um novo nível
+
         }
         /// <summary>
         /// Altera a sigla do nível indicado. Apenas administradores.
@@ -52,6 +53,30 @@ namespace ClassLabNu
         public bool Alterar(int id, string sigla)
         {
             return true;
+        }
+        public static Nivel ObterPorId(int _id)
+        {
+            Nivel nivel = null;
+            var cmd = Banco.abrir();
+            cmd.CommandText = "select * from niveis where idnv = " + _id;
+            var dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                nivel = new Nivel(dr.GetInt32(0), dr.GetString(1), dr.GetString(2), dr.GetBoolean(3));
+            }
+            return nivel;
+        }
+        public static List<Nivel> Listar()
+        {
+            List<Nivel> niveis = new List<Nivel>();
+            var cmd = Banco.abrir();
+            cmd.CommandText = "select * from niveis";
+            var dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                niveis.Add(new Nivel(dr.GetInt32(0), dr.GetString(1), dr.GetString(2), true));
+            }
+            return niveis;
         }
     }
 

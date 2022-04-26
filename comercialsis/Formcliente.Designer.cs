@@ -1,6 +1,6 @@
 ﻿namespace comercialsis
 {
-    partial class Form1
+    partial class Comercialsis
     {
         /// <summary>
         /// Variável de designer necessária.
@@ -39,19 +39,16 @@
             this.chkAtivo = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dtpDataCad = new System.Windows.Forms.DateTimePicker();
-            this.dtgClientes = new System.Windows.Forms.DataGridView();
-            this.clnIdCli = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnNome = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnCPF = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnAtivo = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.btnBuscar = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgClientes)).BeginInit();
+            this.button5 = new System.Windows.Forms.Button();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
+            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(56, 193);
+            this.button1.Location = new System.Drawing.Point(12, 180);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 0;
@@ -60,46 +57,50 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(186, 193);
+            this.button2.Location = new System.Drawing.Point(106, 180);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 1;
             this.button2.Text = "Alterar";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.Click += new System.EventHandler(this.Button2_Click);
             // 
             // ID
             // 
-            this.ID.Location = new System.Drawing.Point(56, 68);
+            this.ID.AccessibleDescription = "ID";
+            this.ID.AccessibleName = "ID";
+            this.ID.Location = new System.Drawing.Point(12, 82);
             this.ID.Name = "ID";
-            this.ID.Size = new System.Drawing.Size(35, 20);
+            this.ID.Size = new System.Drawing.Size(59, 20);
             this.ID.TabIndex = 2;
             this.ID.Tag = "ID";
+            this.ID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ID.TextChanged += new System.EventHandler(this.ID_TextChanged);
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(56, 107);
+            this.textBox2.Location = new System.Drawing.Point(12, 108);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(183, 20);
             this.textBox2.TabIndex = 3;
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(201, 68);
+            this.textBox3.Location = new System.Drawing.Point(232, 105);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(386, 20);
             this.textBox3.TabIndex = 4;
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(318, 107);
+            this.textBox4.Location = new System.Drawing.Point(349, 131);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(269, 20);
             this.textBox4.TabIndex = 5;
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(357, 193);
+            this.button3.Location = new System.Drawing.Point(378, 193);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 6;
@@ -108,7 +109,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(512, 193);
+            this.button4.Location = new System.Drawing.Point(543, 184);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 23);
             this.button4.TabIndex = 7;
@@ -118,7 +119,7 @@
             // chkAtivo
             // 
             this.chkAtivo.AutoSize = true;
-            this.chkAtivo.Location = new System.Drawing.Point(56, 133);
+            this.chkAtivo.Location = new System.Drawing.Point(12, 146);
             this.chkAtivo.Name = "chkAtivo";
             this.chkAtivo.Size = new System.Drawing.Size(50, 17);
             this.chkAtivo.TabIndex = 8;
@@ -128,7 +129,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(301, 137);
+            this.label1.Location = new System.Drawing.Point(363, 164);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(90, 13);
             this.label1.TabIndex = 9;
@@ -138,85 +139,62 @@
             // 
             this.dtpDataCad.Enabled = false;
             this.dtpDataCad.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDataCad.Location = new System.Drawing.Point(397, 134);
+            this.dtpDataCad.Location = new System.Drawing.Point(478, 158);
             this.dtpDataCad.Name = "dtpDataCad";
             this.dtpDataCad.Size = new System.Drawing.Size(140, 20);
             this.dtpDataCad.TabIndex = 10;
             // 
-            // dtgClientes
-            // 
-            this.dtgClientes.AllowUserToAddRows = false;
-            this.dtgClientes.AllowUserToDeleteRows = false;
-            this.dtgClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgClientes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.clnIdCli,
-            this.clnNome,
-            this.clnCPF,
-            this.clnEmail,
-            this.clnAtivo});
-            this.dtgClientes.Location = new System.Drawing.Point(56, 265);
-            this.dtgClientes.Name = "dtgClientes";
-            this.dtgClientes.ReadOnly = true;
-            this.dtgClientes.RowHeadersVisible = false;
-            this.dtgClientes.Size = new System.Drawing.Size(433, 150);
-            this.dtgClientes.TabIndex = 11;
-            // 
-            // clnIdCli
-            // 
-            this.clnIdCli.Frozen = true;
-            this.clnIdCli.HeaderText = "Id";
-            this.clnIdCli.Name = "clnIdCli";
-            this.clnIdCli.ReadOnly = true;
-            this.clnIdCli.Width = 50;
-            // 
-            // clnNome
-            // 
-            this.clnNome.Frozen = true;
-            this.clnNome.HeaderText = "Nome";
-            this.clnNome.Name = "clnNome";
-            this.clnNome.ReadOnly = true;
-            this.clnNome.Width = 130;
-            // 
-            // clnCPF
-            // 
-            this.clnCPF.Frozen = true;
-            this.clnCPF.HeaderText = "CPF";
-            this.clnCPF.Name = "clnCPF";
-            this.clnCPF.ReadOnly = true;
-            this.clnCPF.Width = 90;
-            // 
-            // clnEmail
-            // 
-            this.clnEmail.Frozen = true;
-            this.clnEmail.HeaderText = "Email";
-            this.clnEmail.Name = "clnEmail";
-            this.clnEmail.ReadOnly = true;
-            this.clnEmail.Width = 130;
-            // 
-            // clnAtivo
-            // 
-            this.clnAtivo.Frozen = true;
-            this.clnAtivo.HeaderText = "Ativo";
-            this.clnAtivo.Name = "clnAtivo";
-            this.clnAtivo.ReadOnly = true;
-            this.clnAtivo.Width = 30;
-            // 
             // btnBuscar
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(97, 68);
+            this.btnBuscar.Location = new System.Drawing.Point(77, 80);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(33, 23);
             this.btnBuscar.TabIndex = 12;
             this.btnBuscar.Text = "...";
             this.btnBuscar.UseVisualStyleBackColor = true;
             // 
-            // Form1
+            // button5
             // 
+            this.button5.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.button5.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.button5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.button5.Image = global::comercialsis.Properties.Resources.AdItem2;
+            this.button5.Location = new System.Drawing.Point(624, 137);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(70, 70);
+            this.button5.TabIndex = 13;
+            this.button5.Text = "Salvar";
+            this.button5.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.Button5_Click);
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripComboBox1});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(995, 25);
+            this.toolStrip1.TabIndex = 14;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // toolStripComboBox1
+            // 
+            this.toolStripComboBox1.Name = "toolStripComboBox1";
+            this.toolStripComboBox1.Size = new System.Drawing.Size(121, 25);
+            this.toolStripComboBox1.Click += new System.EventHandler(this.toolStripComboBox1_Click);
+            // 
+            // Comercialsis
+            // 
+            this.AccessibleName = "Commercialsis";
+            this.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(912, 525);
+            this.BackgroundImage = global::comercialsis.Properties.Resources.OIP;
+            this.ClientSize = new System.Drawing.Size(995, 669);
+            this.Controls.Add(this.toolStrip1);
+            this.Controls.Add(this.button5);
             this.Controls.Add(this.btnBuscar);
-            this.Controls.Add(this.dtgClientes);
             this.Controls.Add(this.dtpDataCad);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.chkAtivo);
@@ -228,9 +206,10 @@
             this.Controls.Add(this.ID);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Name = "Form1";
-            this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.dtgClientes)).EndInit();
+            this.Name = "Comercialsis";
+            this.Text = "CommercialSys";
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -249,13 +228,10 @@
         private System.Windows.Forms.CheckBox chkAtivo;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker dtpDataCad;
-        private System.Windows.Forms.DataGridView dtgClientes;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clnIdCli;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clnNome;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clnCPF;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clnEmail;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn clnAtivo;
         private System.Windows.Forms.Button btnBuscar;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripComboBox toolStripComboBox1;
     }
 }
 
@@ -310,6 +286,6 @@
     }
 
 
-         }*/
+         }
 
-}
+*/
