@@ -47,6 +47,7 @@
             this.Controls.Add(this.comboBox1);
             this.Name = "FrmPedidos";
             this.Text = "FrmPedidos";
+            this.Load += new System.EventHandler(this.FrmPedidos_Load);
             this.ResumeLayout(false);
 
         }

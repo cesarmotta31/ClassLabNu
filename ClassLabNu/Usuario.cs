@@ -77,7 +77,14 @@ namespace ClassLabNu
         public static bool EfetuarLogin(string email, string senha)
         {
             // realiza validação e devolve verdadeiro ou falso
-            return false;
+            bool resultado = false;
+            var cmd = Banco.abrir();   
+            cmd.CommandText = " select from usuarios where email = '"+email+"' and senha md5 ('"+senha+"')";
+            var dr = cmd.ExecuteReader();
+            resultado = dr.Read() ? true : false;   
+            if (dr.Read())
+            
+            return resultado;
         }
     }
 }

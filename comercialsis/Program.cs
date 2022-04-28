@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-public class ClassLabNu
-{
 
-}
 
 namespace comercialsis
 

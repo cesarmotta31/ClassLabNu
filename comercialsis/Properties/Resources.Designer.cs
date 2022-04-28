@@ -99,5 +99,25 @@ namespace comercialsis.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap preview1 {
+            get {
+                object obj = ResourceManager.GetObject("preview1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap thumb_razer_turquoise_logo_4k_turquoise_brickwall_razer_logo_brands {
+            get {
+                object obj = ResourceManager.GetObject("thumb-razer-turquoise-logo-4k-turquoise-brickwall-razer-logo-brands", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

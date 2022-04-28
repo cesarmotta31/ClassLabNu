@@ -16,5 +16,10 @@ namespace comercialsis
         {
             InitializeComponent();
         }
+
+        private void FrmPedidos_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
